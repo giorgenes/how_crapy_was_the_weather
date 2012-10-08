@@ -1,0 +1,41 @@
+%html
+  %head
+    %script{:type => "text/javaScript", :src => "https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"}
+    %script
+      = "vans_warped_locations = #{locations.to_json}";
+    %script{:type => "text/javaScript", :src => "application.js"}
+    :css
+      #locations {
+        width: 500px;
+        position: absolute;
+        left: 50%;
+        margin-left: -250px;
+        margin-top: 50px;
+        border: 1px dotted;
+        padding: 10px;
+      }
+      div.location {
+        margin-bottom: 10px;
+      }
+
+      #locations span {
+        display: block;
+        text-align: center;
+      }
+
+      span.location {
+        font-size: 1.2em;
+        font-weight: bold; 
+      }
+
+      span.temperature {
+        color: #151B54;
+      }
+  %body
+    - index = 0
+    #locations
+      - locations.each do |location|
+        %div.location{:id => "location_#{index = index + 1}"}
+          %span.date= location[:date]
+          %span.location= location[:location]
+          %span.temperature Loading...
