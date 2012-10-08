@@ -1,4 +1,4 @@
-require 'main'
+require './main'
 
 run HowCrapyWasIt.new
 
